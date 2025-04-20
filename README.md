@@ -62,3 +62,16 @@ I’m building a solution with:
 
 ---
 
+## Milestone 1: Full Stack Development Environment Setup
+
+This milestone establishes the baseline infrastructure for both the backend and frontend development environments, enabling rapid iteration and stable integration.
+
+---
+
+### Objectives
+- Scaffold and configure backend (Express + MongoDB + Socket.IO).
+- Bootstrap frontend (React) with essential dependencies.
+- Enable cross-origin support and real-time communication setup.
+
+---
+
