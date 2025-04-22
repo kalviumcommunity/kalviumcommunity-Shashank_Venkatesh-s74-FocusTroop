@@ -75,3 +75,16 @@ This milestone establishes the baseline infrastructure for both the backend and 
 
 ---
 
+## Milestone-2 - Completed Tasks
+
+- Added **User Schema Model** for storing user details.
+- Configured **dotenv** to manage environment variables (`.env`).
+- Established connection with **MongoDB** using Mongoose.
+- Created a **signup route** using Express **Router** in `routes/Auth.js`.
+- Used **bcrypt** to hash passwords securely before storing in the database.
+- Implemented **JWT (JSON Web Token)** for authentication.
+- Successfully connected the signup route at `POST /api/auth/signup`.
+- Tested route with Postman/Thunder Client using a sample JSON request:
+  
+---
+
