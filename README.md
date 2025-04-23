@@ -88,3 +88,10 @@ This milestone establishes the baseline infrastructure for both the backend and 
   
 ---
 
+## Milestone-2 - Authentication - Login Feature
+# User Login Implemented
+
+- Secure login using bcrypt for password verification.
+- JWT token issued on successful authentication.
+- Proper error handling and status codes.
+- Response includes token and user data (excluding password).
