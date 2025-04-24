@@ -88,7 +88,7 @@ This milestone establishes the baseline infrastructure for both the backend and 
   
 ---
 
-## Milestone-2 - Authentication - Login Feature
+## Milestone-3 - Authentication - Login Feature
 # User Login Implemented
 
 - Secure login using bcrypt for password verification.

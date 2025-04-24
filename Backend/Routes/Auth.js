@@ -1,35 +1,34 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const UserModel = require('../Model/UserModel'); 
 const router = express.Router();
-
-let users = [];
 
 // SIGNUP ROUTE
 router.post('/signup', async (req, res) => {
     try {
-        const { username, email, password } = req.body;
+        const { name, email, password } = req.body;
 
-        if (!username || !email || !password) {
+        if (!name || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        const existingUser = users.find(user => user.email === email);
+        const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "User already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = { id: Date.now(), username, email, password: hashedPassword };
-        users.push(newUser);
+        const newUser = new UserModel({ name, email, password: hashedPassword });
+        await newUser.save();
 
-        const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
         res.status(201).json({
             message: "User registered successfully",
             user: {
-                id: newUser.id,
-                username: newUser.username,
+                id: newUser._id,
+                name: newUser.name,
                 email: newUser.email
             },
             token
@@ -50,7 +49,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: "Email and password are required" });
         }
 
-        const user = users.find(user => user.email === email);
+        const user = await UserModel.findOne({ email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -60,13 +59,13 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ message: "Invalid credentials" });
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "1d" });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
         res.status(200).json({
             message: "Login successful",
             user: {
-                id: user.id,
-                username: user.username,
+                id: user._id,
+                name: user.name,
                 email: user.email
             },
             token
