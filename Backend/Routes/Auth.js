@@ -77,4 +77,21 @@ router.post('/login', async (req, res) => {
     }
 });
 
+//CHECKING WHETHER THE CREATED USER IS PRESENT OR NOT
+
+router.get('/data', async (req, res) => {
+    try {
+        const data = await UserModel.find(); 
+
+        if (!data || data.length === 0) {
+            return res.status(404).json({ message: "No data saved yet" });
+        }
+
+        return res.status(200).json(data);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+
+
 module.exports = router;
