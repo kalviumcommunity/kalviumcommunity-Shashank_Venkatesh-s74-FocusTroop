@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const UserModel = require('../Model/UserModel'); 
 const router = express.Router();
 
@@ -22,17 +22,6 @@ router.post('/signup', async (req, res) => {
         const newUser = new UserModel({ name, email, password: hashedPassword });
         await newUser.save();
 
-        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
-
-        res.status(201).json({
-            message: "User registered successfully",
-            user: {
-                id: newUser._id,
-                name: newUser.name,
-                email: newUser.email
-            },
-            token
-        });
 
     } catch (error) {
         console.error("Signup error:", error.message);
@@ -73,6 +62,55 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
         console.error("Login error:", error.message);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+//PUT EDITING THE INFO
+
+
+router.put('/update', async (req, res) => {
+    try {
+        const token = req.headers.authorization?.split(' ')[1];
+
+        if (!token) {
+            return res.status(401).json({ message: "Access denied. No token provided." });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const userId = decoded.id;
+
+        const { name, email, password } = req.body;
+
+        const updatedFields = {};
+        if (name) updatedFields.name = name;
+        if (email) updatedFields.email = email;
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            updatedFields.password = hashedPassword;
+        }
+
+        const updatedUser = await UserModel.findByIdAndUpdate(
+            userId,
+            { $set: updatedFields },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json({
+            message: "Profile updated successfully",
+            user: {
+                id: updatedUser._id,
+                name: updatedUser.name,
+                email: updatedUser.email
+            }
+        });
+
+    } catch (error) {
+        console.error("Update error:", error.message);
         res.status(500).json({ message: "Server error" });
     }
 });

@@ -11,15 +11,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "exprss": "^0.0.1-security",
+    "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.14.1",
-    "nodemon": "^3.1.10",
-    "socket.io": "^4.8.1"
+    "mongoose": "^8.15.0",
+    "nodemon": "^3.1.10"
   }
 }
