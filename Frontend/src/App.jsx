@@ -1,12 +1,20 @@
-import React from 'react'
-import Home from './Pages/Home'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import Settings from "./Pages/Settings";
+import Solo from "./Pages/Solo";
 
 const App = () => {
   return (
-    <div>
-      <Home/>
-    </div>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/solo" element={<Solo />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
