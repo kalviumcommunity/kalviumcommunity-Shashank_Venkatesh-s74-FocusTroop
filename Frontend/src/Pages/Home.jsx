@@ -12,9 +12,9 @@ const Home = () => {
           <span className="ml-2 italic text-lg">FocusTroop</span>
         </h1>
         <div className="space-x-4">
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md">LOGIN</button>
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md">SIGNUP</button>
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md">ABOUT</button>
+          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">LOGIN</button>
+          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">SIGNUP</button>
+          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">ABOUT</button>
         </div>
       </div>
 
@@ -28,7 +28,7 @@ const Home = () => {
           </p>
           <div className="text-4xl mb-4">👤</div>
           <Link to="/solo">
-            <button className="bg-[#7f61f3] text-white font-bold italic px-6 py-2 rounded-sm hover:bg-[#6c4de3] transition">
+            <button className="bg-[#7f61f3] text-white font-bold italic px-6 py-2 rounded-sm hover:bg-[#6c4de3] transition cursor-pointer">
               SOLO SESSION
             </button>
           </Link>
@@ -42,7 +42,7 @@ const Home = () => {
           </p>
           <div className="text-4xl mb-4">👥</div>
           <Link to="/group">
-            <button className="bg-[#a078f0] text-white font-bold italic px-6 py-2 rounded-sm hover:bg-[#8d66da] transition">
+            <button className="bg-[#a078f0] text-white font-bold italic px-6 py-2 rounded-sm hover:bg-[#8d66da] transition cursor-pointer">
               GROUP SESSION
             </button>
           </Link>
