@@ -7,14 +7,14 @@ const Home = () => {
       {/* Navbar */}
       <div className="flex justify-between items-center px-6 py-4 bg-white shadow">
         <h1 className="text-2xl font-bold text-purple-800 tracking-wide">
-          <span className="font-extrabold text-xl">F</span>
-          <span className="font-extrabold text-xl">T</span>
+          {/* <span className="font-extrabold text-xl">F</span> */}
+          {/* <span className="font-extrabold text-xl">T</span> */}
           <span className="ml-2 italic text-lg">FocusTroop</span>
         </h1>
         <div className="space-x-4">
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">LOGIN</button>
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">SIGNUP</button>
-          <button className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">ABOUT</button>
+          <Link to="/login" className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">LOGIN</Link>
+          <Link to="/signin" className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">SIGNIN</Link>
+          <Link to="/about" className="bg-gray-200 text-purple-700 font-bold italic px-4 py-1 rounded-md cursor-pointer hover:bg-[#8d66da] hover:text-[white] transition">ABOUT</Link>
         </div>
       </div>
 
