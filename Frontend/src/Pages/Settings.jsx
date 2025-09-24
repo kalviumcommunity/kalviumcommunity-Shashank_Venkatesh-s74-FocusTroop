@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function settings({ onApply, onClose }) {
-  const [focusTime, setFocusTime] = useState("");
-  const [shortBreak, setShortBreak] = useState("");
-  const [longBreak, setLongBreak] = useState("");
+export default function Settings({ onApply, onClose, defaultDurations }) {
+  const [focusTime, setFocusTime] = useState("25");
+  const [shortBreak, setShortBreak] = useState("5");
+  const [longBreak, setLongBreak] = useState("15");
+
+  // ✅ Load default values when modal opens
+  useEffect(() => {
+    if (defaultDurations) {
+      setFocusTime(defaultDurations.focus / 60);   // convert sec → min
+      setShortBreak(defaultDurations.short / 60);
+      setLongBreak(defaultDurations.long / 60);
+    }
+  }, [defaultDurations]);
 
   const handleApply = () => {
     if (onApply) {
@@ -22,18 +31,12 @@ export default function settings({ onApply, onClose }) {
         {/* Title */}
         <h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center justify-center gap-2">
           SETTINGS
-          <span role="img" aria-label="settings">
-            ⚙️
-          </span>
         </h2>
 
         {/* Focus Time */}
         <div className="flex items-center justify-between mb-4">
           <label className="flex items-center gap-2 font-medium text-purple-700">
-            <span role="img" aria-label="focus">
-              📖
-            </span>
-            Focus timer
+            📖 Focus timer
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -50,10 +53,7 @@ export default function settings({ onApply, onClose }) {
         {/* Short Break */}
         <div className="flex items-center justify-between mb-4">
           <label className="flex items-center gap-2 font-medium text-purple-700">
-            <span role="img" aria-label="coffee">
-              ☕
-            </span>
-            Short Break
+            ☕ Short Break
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -70,10 +70,7 @@ export default function settings({ onApply, onClose }) {
         {/* Long Break */}
         <div className="flex items-center justify-between mb-6">
           <label className="flex items-center gap-2 font-medium text-purple-700">
-            <span role="img" aria-label="lightning">
-              🔄
-            </span>
-            Long Break
+            🔄 Long Break
           </label>
           <div className="flex items-center gap-2">
             <input
