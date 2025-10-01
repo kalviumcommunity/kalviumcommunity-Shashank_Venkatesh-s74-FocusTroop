@@ -9,6 +9,7 @@ import About from "./Pages/About";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Account from "./Pages/Account";
+import Final from "./Pages/Group/Final";
 
 const App = () => {
   return (
@@ -23,6 +24,8 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login/>} />
             <Route path="/account" element={<Account/>} />
+            <Route path="/group" element={<Final/>} />
+
             
           </Routes>
         </div>
