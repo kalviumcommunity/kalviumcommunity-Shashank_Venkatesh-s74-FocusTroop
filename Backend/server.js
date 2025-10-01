@@ -10,7 +10,6 @@ const port = process.env.PORT;
 //MONGODB CONNECTION CALLED
 connectDB();
 
-app.use('/api',Auth);
 app.use('/api',Time)
 
 app.listen(port, () => {
