@@ -10,7 +10,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 //ROUTES
-const authRoutes = require('./Routes/Auth');
-app.use('/api/auth', authRoutes); 
+// const authRoutes = require('./Routes/Auth');
+// app.use('/api/auth', authRoutes); 
 
 module.exports = app;
