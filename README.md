@@ -100,5 +100,7 @@ This milestone establishes the baseline infrastructure for both the backend and 
 # Deployment using render
 
 Render Link: 
-
 https://kalviumcommunity-shashank-venkatesh-s74.onrender.com
+
+Netlify Link:
+https://focustroops.netlify.app/
